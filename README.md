@@ -1,1 +1,1 @@
-# Benchmarking-metagenomic-binners
+# Benchmarking_metagenomic_binners
