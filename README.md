@@ -13,18 +13,19 @@ It provides simulation and real datasets, binning outputs, benchmarking metrics,
 
 ```text
 .
-├── datasets/
-│   ├── simulation/          # In-house simulated datasets (20 total)
-│   └── real/                # Real metagenomic samples (gut, soil, ocean)
-├── results/
-│   ├── binning_scores/      # Evaluation metrics (TSV)
-│   └── result_plots/        # Selected binning results (e.g., completeness, purity, # of NC MAGs)
-├── scripts/
-│   ├── workflow/            # Main benchmarking pipelines (Linux/Python)
-│   └── utilities/           # Scoring and visualization scripts
-└── docs/
-    └── usage_example.md     # Quick start usage guide
+├── benchmark_results/       # Provided TSV files with binning evaluation metrics
+├── scripts/                 # Scripts for scoring, plotting, and dataset handling
+├── run_commands.md          # Commands used for running each binning tool
+├── datasets.md              # Zenodo download links and reconstruction instructions
+└── README.md                # Project overview and navigation
 ```
+
+---
+
+## Quick Links
+
+- [Download datasets from Zenodo](datasets.md)
+- [View run commands for each tool](run_commands.md)
 
 ---
 
@@ -32,65 +33,48 @@ It provides simulation and real datasets, binning outputs, benchmarking metrics,
 
 ### 1. Simulation Datasets
 
-**Location:** `datasets/simulation/`
-
-- 20 synthetic datasets generated using [CAMISIM](https://github.com/CAMI-challenge/CAMISIM)
+20 synthetic metagenomic datasets generated using [CAMISIM](https://github.com/CAMI-challenge/CAMISIM)
 - Variable parameters:
   - **Sequencing depth**: 2.4, 5.0, 7.2, 10.0 Gbp
   - **Taxonomic complexity**: 60, 150, 600, 1000, 1500 genomes
 - Includes:
   - Paired-end FASTQ files
-  - Gold standard assemblies
-  - Read-to-reference alignment BAMs
+  - Gold standard assemblies (contigs)
+  - GSA mapping tables
+
+See [datasets.md](datasets.md) for download links and reconstruction instructions.
+
 
 ### 2. Real Metagenomic Datasets
 
-**Location:** `datasets/real/`
-
-- Human gut, soil, and ocean samples
-- Curated from public repositories (details in `README_dataset.md`)
-- All samples have ≥2 Gbp sequencing depth and passed quality control
+Human gut, soil, and ocean metagenomic samples
+| Dataset       | Accession |
+|---------------|-----------|
+| gut_2.9Gb     | [PRJNA797994](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA797994) |
+| gut_4.5Gb     | [PRJEB27005](https://www.ebi.ac.uk/ena/browser/view/PRJEB27005) |
+| gut_7.2Gb     | [PRJEB33013](https://www.ebi.ac.uk/ena/browser/view/PRJEB33013) |
+| gut_8.5Gb     | [PRJEB39223](https://www.ebi.ac.uk/ena/browser/view/PRJEB39223) |
+| gut_9.4Gb     | [PRJDB4525](https://www.ncbi.nlm.nih.gov/bioproject/PRJDB4525) |
+| gut_11.6Gb    | [PRJNA624763](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA624763) |
+| ocean         | [PRJNA273799](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA273799) |
+| soil          | [PRJNA261849](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA261849) |
 
 ---
 
 ## Benchmarking Outputs
 
-**Location:** `results/`
+**Location:** `benchmark_results/`
 
-- **Binning scores** (`binning_scores/*.tsv`)\
-  Metrics for each tool and dataset:
+We provide evaluation metrics (`.tsv` format) for all binning tools across both synthetic and real datasets.
 
-  - Number of Near Complete (NC) and Medium Quality (MQ) MAGs
-  - ARI, completeness, contamination
-  - GUNC filtering results
+- `synthetic_binning_result.tsv`: Results for synthetic datasets from Zenodo
+- `real_binning_result.tsv`: Results for public metagenomic datasets (gut, soil, ocean)
 
-- **Supplementary figure data** for plotting (Extended Figs)
+Each file includes:
+- Number of Near Complete (NC) MAGs (≥90% completeness, ≤5% contamination)
+- Number of Medium Quality (MQ) MAGs (≥50% completeness, ≤10% contamination)
 
----
-
-## Benchmarking Pipelines
-
-**Location:** `scripts/`
-
-- Modular Python pipelines for reproducibility
-- Supports:
-  - Tool wrappers for all 9 binners
-  - Evaluation tools (CheckM2, GUNC, AMBER)
-- Environment files:
-  - `environment.yml` (Conda)
-  - `requirements.txt` (pip)
-
----
-
-## Quick Start
-
-Please refer to [`docs/usage_example.md`](docs/usage_example.md) for:
-
-- How to run a benchmark on a selected dataset
-- Required inputs and expected outputs
-- Reproducing results shown in the manuscript
 
 ---
 
 ## Citation
-
