@@ -17,6 +17,7 @@ It provides simulation and real datasets, binning outputs, benchmarking metrics,
 ├── scripts/                 # Scripts for scoring, plotting, and dataset handling
 ├── run_commands.md          # Commands used for running each binning tool
 ├── datasets.md              # Zenodo download links and reconstruction instructions
+├── refinement_checkm2.md 
 └── README.md                # Project overview and navigation
 ```
 
@@ -74,7 +75,12 @@ Each file includes:
 - Number of Near Complete (NC) MAGs (≥90% completeness, ≤5% contamination)
 - Number of Medium Quality (MQ) MAGs (≥50% completeness, ≤10% contamination)
 
+---
 
+## Reproducibility
+
+Detailed information about the refinement pipeline, software dependencies, and execution environment is available in:
+- [Refinement Documentation](refinement_checkm2.md)
 ---
 
 ## Citation
