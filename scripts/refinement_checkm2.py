@@ -2,6 +2,10 @@
 
 import os, sys, glob
 
+# This script is adapted from the metaWRAP bin refinement module:
+# https://github.com/bxlab/metaWRAP
+# Modifications were made to support CheckM2-derived bin quality statistics.
+# Please refer to the original metaWRAP license for terms of use.
 
 ##CAUTION###
 print('Input bin must have *.fa *.fasta / NOT .fna!!!!metabat2,mexbin2,concoct is ok')
